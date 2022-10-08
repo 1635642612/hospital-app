@@ -10,6 +10,12 @@
 			"style": {}
 		},
 		{
+			"path": "pages/home/home",
+			"style": {
+				"enablePullDownRefresh":true
+			}
+		},
+		{
 			"path": "pages/center/center",
 			"style": {
 				"enablePullDownRefresh":true
@@ -135,7 +141,14 @@
 		"selectedColor": "#7EC0EE",
 		"borderStyle": "white",
 		// "backgroundColor":"#F2F2F2",
-		"list": [{
+		"list": [
+			{
+					"pagePath": "pages/home/home",
+					"iconPath": "static/center/unknownAvatar.png",
+					"selectedIconPath": "static/center/appoint-record.png",
+					"text": "首页1"
+				},
+			{
 				"pagePath": "pages/home/appointmentHome/appointmentHome",
 				"iconPath": "static/tabbar/appoint-gray.png",
 				"selectedIconPath": "static/tabbar/appoint-blue.png",
@@ -151,7 +164,7 @@
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "医院挂号系统",
+		"navigationBarTitleText": "安化县人民医院",
 		"navigationBarBackgroundColor": "#7EC0EE",
 		"backgroundColor": "#F2F2F2"
 	}

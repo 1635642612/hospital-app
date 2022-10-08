@@ -62,7 +62,15 @@
 				 * @param phone 医院联系电话
 				 * @param picture 医院地址
 				 * **/
-				hospitalList: []
+				hospitalList: [
+					{id : "01",
+					address :"安化县东平镇迎春路7号",
+					description :"简述",
+					name :"安化县人民医院 本院",
+					phone :"7298000",
+					picture :"",
+					}
+				]
 			}
 		},
 		methods: {
