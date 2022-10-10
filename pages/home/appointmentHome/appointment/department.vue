@@ -3,9 +3,9 @@
 	<view>
 		<view class="VerticalBox" style="margin-top: 40rpx;">
 			<scroll-view class="VerticalNav nav" scroll-y scroll-with-animation :scroll-top="verticalNavTop" style="height:calc(100vh - 175upx)">
-				<view class="cu-item" :class="item.id==tabCur?'visited-color':''" v-for="(item,index) in allData.departmentList" :key="item.id" @tap="TabSelect"
-				 :data-id="item.id" :data-name="item.name">
-					{{item.name}}
+				<view class="cu-item" :class="item.ksdm==tabCur?'visited-color':''" v-for="(item,index) in allData.departmentList" :key="item.ksdm" @tap="TabSelect"
+				 :data-id="item.ksdm" :data-name="item.ksmc">
+					{{item.ksmc}}
 				</view>
 			</scroll-view>
 			<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 175upx)"
@@ -17,8 +17,8 @@
 					</view>
 					<view class="cu-list menu-avatar">
 						<view class="cu-item" v-for="(item, index) in outpatientList"
-						:key="item.id" @click="toPage(item.id)">
-							<text class="text-position">{{item.name}}</text>
+						:key="item.ksdm" @click="toPage(item.ksdm)">
+							<text class="text-position">{{item.ksmc}}</text>
 						</view>
 					</view>
 				</view>
@@ -45,7 +45,7 @@
 				verticalNavTop: 0,
 				load: true,
 				currentDep: '',// 当前所点击的科室
-				outpatientList: [] // 用作装门诊列表的数据
+				outpatientList: this.departmentList// 用作装门诊列表的数据
 			};
 		},
 		methods: {
@@ -82,7 +82,7 @@
 				this.outpatientList = []
 				getOutpatientByHospital(hospitalID, this.tabCur, 1, 50).then(res => {
 					if(res.data.code === 200) {
-						this.outpatientList = res.data.data.list
+						this.outpatientList = res.data.response.body
 					}
 				}).catch(() => {
 					uni.hideLoading()

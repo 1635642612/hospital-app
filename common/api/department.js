@@ -20,3 +20,31 @@ import unLoginRequest from '@/common/utils/unloginRequest.js'
 		 method: 'get'
 	 })
  }
+ 
+ export function getDepartmentHospitalAH(data) {
+ 	 return unLoginRequest({
+ 		 url: "",
+ 		 method: 'post',
+		 data
+ 	 })
+ }
+ 
+ export function getDepartmentHospitalAHall() {
+ 	 return unLoginRequest({
+ 		 url: "",
+ 		 method: 'post',
+ 		 data:{
+				"request": {
+					"head": {
+						"appId": "9005",
+						"messageId": "3456789345",
+						"timestamp": "1539678444",
+						"tranCode": "CDRGH001",
+						"version": "2.0"
+					},
+					"body": {
+					}
+				}
+			}
+ 	 })
+ }

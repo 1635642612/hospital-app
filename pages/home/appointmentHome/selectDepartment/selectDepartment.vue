@@ -6,7 +6,7 @@
 
 <script>
 	import department from '../appointment/department.vue'
-	import {getDepartmentHospital} from '@/common/api/department.js'
+	import {getDepartmentHospitalAHall} from '@/common/api/department.js'
 	
 	export default {
 		components: {
@@ -16,22 +16,25 @@
 			return {
 				propsData: {
 					departmentList: [],
-					hospitalID: 0
+					hospitalID: 0,
 				},
 			}
 		},
 		methods: {
 			// 获取某个医院ID所属的专科
-			getDepartmentHospital: function(hospitalID) {
+			getDepartmentHospitalAH: function(requestAH) {
 				uni.showLoading({
 					title: '加载中'
 				})
 				this.departmentList = [];
-				getDepartmentHospital(hospitalID, 1, 50).then(res => {
-					if(res.data.code === 200) {
-						const data = res.data.data.list
+				
+				getDepartmentHospitalAHall().then(res => {
+					if(res.statusCode === 200) {
+					 
+						const data = res.data.response.body;
+						
 						this.propsData.departmentList = data;
-						this.$refs.department.changeInit(data[0].id, data[0].name)
+						//this.$refs.department.changeInit(data[0].ksdm, data[0].ksmc)
 						uni.hideLoading();
 					}
 				}).catch(() => {
@@ -42,7 +45,7 @@
 		},
 		onLoad(e) {
 			this.propsData.hospitalID = e.hospitalID
-			this.getDepartmentHospital(e.hospitalID)
+			this.getDepartmentHospitalAH(e.requestAH)
 			uni.setStorageSync('hospitalId', e.hospitalID)
 		}
 	}
